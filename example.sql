@@ -1,0 +1,1 @@
+CREATE SCHEMA `teemo_shrooms` ;
