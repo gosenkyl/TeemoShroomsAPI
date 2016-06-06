@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.teemo.shrooms.repository"})
-@ComponentScan({"com.teeemo.shrooms"})
-public class TeemoShroomsApiApplication {
+@ComponentScan({"com.teemo.shrooms"})
+public class Application {
 	public static void main(String[] args) {
-		SpringApplication.run(TeemoShroomsApiApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
