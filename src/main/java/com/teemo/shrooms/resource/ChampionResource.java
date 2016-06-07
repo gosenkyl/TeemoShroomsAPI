@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/champions")
+@RequestMapping("api/champions")
 @CrossOrigin
 public class ChampionResource {
 
@@ -20,10 +20,10 @@ public class ChampionResource {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<Champion> getAllChampions(){
-        return championService.getAll();
+        return championService.findAll();
     }
 
-    @RequestMapping(value = "/{championId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "{championId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Champion getChampionById(@PathVariable String championId){
         return championService.findById(championId);
     }

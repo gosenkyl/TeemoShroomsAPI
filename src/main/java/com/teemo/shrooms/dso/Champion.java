@@ -2,16 +2,11 @@ package com.teemo.shrooms.dso;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CHAMPION")
-public class Champion {
-
-    @Id
-    @Column(name = "id")
-    private String id;
+public class Champion extends BaseEntity{
 
     @Column(name = "key")
     private Long key;
@@ -24,13 +19,6 @@ public class Champion {
 
     @Column(name = "image")
     private String image;
-
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Long getKey() {
         return key;
