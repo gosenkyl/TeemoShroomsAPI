@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -33,12 +34,18 @@ public class UserResource {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public User createEntity(User entity) {
+    public User createOrUpdateEntity(User entity) {
+        entity.setLastPolled(new Date());
+
         return userService.save(entity);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<User> createEntity(List<User> entities) {
+    public List<User> createOrUpdateEntities(List<User> entities) {
+        for(User user : entities){
+            user.setLastPolled(new Date());
+        }
+
         return userService.save(entities);
     }
 
