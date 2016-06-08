@@ -1,5 +1,7 @@
 CREATE SCHEMA `teemo_shrooms` ;
 
+USE `teemo_shrooms`;
+
 CREATE TABLE `teemo_shrooms`.`champion` (
   `id` varchar(45) NOT NULL,
   `key` int(11) NOT NULL,
@@ -147,3 +149,14 @@ INSERT INTO CHAMPION VALUES ('JarvanIV','59','Jarvan IV','the Exemplar of Demaci
 INSERT INTO CHAMPION VALUES ('Malzahar','90','Malzahar','the Prophet of the Void','Malzahar.png');
 INSERT INTO CHAMPION VALUES ('Zac','154','Zac','the Secret Weapon','Zac.png');
 INSERT INTO CHAMPION VALUES ('Gragas','79','Gragas','the Rabble Rouser','Gragas.png');
+
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'kr', 'Korea', 10, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'na', 'Korea', 20, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'br', 'Brazil', 30, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'oce', 'Oceania', 40, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'tr', 'Turkey', 50, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'rus', 'Russia', 60, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'lan', 'Latin America North', 70, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'las', 'Latin America South', 80, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'ene', 'Europe East & Nordic', 90, 1);
+INSERT INTO REFERENCE_DATA VALUES (UUID(), 'Server', 'euw', 'Europe West', 100, 1);
