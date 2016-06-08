@@ -2,7 +2,7 @@ CREATE SCHEMA `teemo_shrooms` ;
 
 USE `teemo_shrooms`;
 
-CREATE TABLE `teemo_shrooms`.`champion` (
+CREATE TABLE `teemo_shrooms`.`CHAMPION` (
   `id` varchar(45) NOT NULL,
   `key` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -11,14 +11,22 @@ CREATE TABLE `teemo_shrooms`.`champion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `teemo_shrooms`.`reference_data` (
+CREATE TABLE `teemo_shrooms`.`REFERENCE_DATA` (
   `id` VARCHAR(36) NOT NULL,
   `set_id` VARCHAR(45) NOT NULL,
   `key` VARCHAR(45) NOT NULL,
   `value` VARCHAR(45) NOT NULL,
   `order` INT NULL,
   `active_flag` TINYINT NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `teemo_shrooms`.`USER` (
+  `id` varchar(36) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
+  `last_polled` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO CHAMPION VALUES ('Jax','24','Jax','Grandmaster at Arms','Jax.png');
 INSERT INTO CHAMPION VALUES ('Sona','37','Sona','Maven of the Strings','Sona.png');
