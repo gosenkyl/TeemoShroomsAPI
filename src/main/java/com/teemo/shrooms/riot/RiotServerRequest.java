@@ -21,20 +21,22 @@ public abstract class RiotServerRequest {
 
     private static final String SCHEME = "https";
     private static final String ENV = "na";
-    private static final String HOST = "api.pvp.net/api/lol";
+    private static final String HOST = "api.pvp.net";
 
     private static final String  API_KEY = "5cce8c73-53e1-4ba5-ae3a-82e55cf3d299";
 
+    private String path;
     private String version;
     private String region;
 
     private String url = "";
 
-    public RiotServerRequest(String version, String region){
+    public RiotServerRequest(String path, String version, String region){
         this.version = version;
         this.region = region;
+        this.path = path;
 
-        this.url = SCHEME + "://" + ENV + "." + HOST + "/" + this.region + "/v" + this.version;
+        this.url = SCHEME + "://" + ENV + "." + HOST + "/" + this.path + "/" + this.region + "/v" + this.version;
     }
 
     protected String request(String endPoint) throws IOException, ParseException {
