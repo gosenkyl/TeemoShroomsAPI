@@ -1,5 +1,5 @@
+DROP SCHEMA IF EXISTS `teemo_shrooms`;
 CREATE SCHEMA `teemo_shrooms` ;
-
 USE `teemo_shrooms`;
 
 CREATE TABLE `teemo_shrooms`.`CHAMPION` (
