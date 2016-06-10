@@ -23,32 +23,47 @@ public abstract class RiotServerRequest {
     private static final String ENV = "na";
     private static final String HOST = "api.pvp.net";
 
-    private static final String  API_KEY = "5cce8c73-53e1-4ba5-ae3a-82e55cf3d299";
+    private static final String API_KEY = "5cce8c73-53e1-4ba5-ae3a-82e55cf3d299";
 
     private String path;
-    private String version;
-    private String region;
 
     private String url = "";
 
-    public RiotServerRequest(String path, String version, String region){
-        this.version = version;
-        this.region = region;
+    public RiotServerRequest(String path){
         this.path = path;
 
-        this.url = SCHEME + "://" + ENV + "." + HOST + "/" + this.path + "/" + this.region + "/v" + this.version;
+        this.url = SCHEME + "://" + ENV + "." + HOST + "/" + this.path;
     }
 
-    protected String request(String endPoint) throws IOException, ParseException {
+    protected String request(String endPoint) {
         return request(endPoint, null);
     }
 
-    protected String request(String endPoint, Map<String, String> params) throws IOException, ParseException {
-        URL request = new URL(formatURL(endPoint, params));
-        System.out.println("URL is: " + request.getPath());
-        URLConnection api = request.openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(api.getInputStream()));
-        String output = IOUtils.toString(in);
+    protected String request(String endPoint, Map<String, String> params) {
+        URL request;
+        URLConnection api;
+        String output;
+
+        try {
+            request = new URL(formatURL(endPoint, params));
+            System.out.println("URL is: " + request.getPath());
+        } catch(Exception e){
+            return "BAD_URL_FORMAT";
+        }
+
+        try {
+            api = request.openConnection();
+        } catch(Exception e){
+            return "NO_CONNECTION";
+        }
+
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(api.getInputStream()));
+            output = IOUtils.toString(in);
+        } catch(Exception e){
+            return "CANT_READ";
+        }
+
         System.out.println("Output: \n" + output);
         return output;
     }
@@ -67,85 +82,4 @@ public abstract class RiotServerRequest {
         return url;
     }
 
-    /*public static String getRecentGame(String region, long id) throws Exception {
-        String call = "game/by-summoner/" + id + "/recent";
-
-        //add API URL to the call
-        call = API_URL_1_1 + call;
-
-        return request(region,call);
-    }
-
-    public static String getLeague(String region, long id) throws Exception {
-        String call = "league/by-summoner/" + id;
-
-        //add API URL to the call
-        call = API_URL_2_1 + call;
-
-        return request(region, call);
-    }
-
-    public static String getStats(String region,long id, STATS_OPTIONS options)  throws Exception {
-        String call = "stats/by-summoner/"  + id + "/";
-        switch (options) {
-            case SUMMARY:
-                call += "summary";
-                break;
-            case RANKED:
-                call += "ranked";
-                break;
-            default:
-                break;
-        }
-        //add API URL to the call
-        call = API_URL_1_1 + call;
-
-        return request(region,call);
-    }
-
-    public static String getSummoner(String region, long id, SUMMONER_OPTIONS option) throws Exception {
-        String call = "summoner/" + id;
-        switch (option) {
-            case MASTERIES:
-                call += "/masteries";
-                break;
-            case RUNES:
-                call += "/runes";
-                break;
-            case ID:
-                // just return because the strings should is already
-                // built
-                break;
-            default:
-                //do nothing
-                break;
-        }
-        //add API URL to the call
-        call = API_URL_1_1 + call;
-        return request(region,call);
-    }
-
-    public static String getSummonerNameListByIDs (String region, String idList) throws Exception{
-        String call = "summoner/" + idList + "/name";
-        call = API_URL_1_1 + call;
-        return request(region, call);
-    }
-
-    public static String getSummonerByName(String region, String name) throws Exception {
-        String call = "summoner/by-name/" + name;
-
-        //add API URL to the call
-        call = API_URL_1_1 + call;
-        System.out.println("Call: " + call);
-        return request(region,call);
-    }
-
-    public static String getTeam(String region, long id) throws Exception {
-        String call = "team/by-summoner/" + id;
-
-        //add API URL to the call
-        call = API_URL_2_1 + call;
-
-        return request(region, call);
-    }*/
 }

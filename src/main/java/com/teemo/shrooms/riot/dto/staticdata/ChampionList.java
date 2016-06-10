@@ -10,10 +10,6 @@ public class ChampionList {
     @JsonDeserialize(contentAs=Champion.class)
     private List<Champion> champions;
 
-    public ChampionList() {
-        champions = new ArrayList<>();
-    }
-
     public List<Champion> getChampions (){
         return this.champions;
     }

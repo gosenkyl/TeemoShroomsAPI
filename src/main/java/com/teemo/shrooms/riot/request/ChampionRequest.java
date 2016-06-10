@@ -10,10 +10,10 @@ import java.util.Map;
 public class ChampionRequest extends RiotServerRequest {
 
     public ChampionRequest(){
-        super("api/lol", "1.2", "na");
+        super("api/lol/na/v1.2");
     }
 
-    public String getAllChampions() throws Exception {
+    public String getAllChampions() {
         String endPoint = "champion";
         return request(endPoint);
     }

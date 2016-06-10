@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/lol-static-datas")
+@RequestMapping("api/riot/lol-static-datas")
 @CrossOrigin
 public class LolStaticDataResource {
 
